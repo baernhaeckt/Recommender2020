@@ -1,15 +1,16 @@
 from data_import import DataImport
 from offers_recommender import RecommenderService
 
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
 
-@app.route('/offers')
+@app.route('/offers', methods=["GET"])
 def recommend_offers():
+    text = request.args.get("text")
     recommender = RecommenderService()
-    results = recommender.recommend("bier geniessen unterhaltung spass stadt")
+    results = recommender.recommend(text)
 
     return jsonify(result=results)
 
