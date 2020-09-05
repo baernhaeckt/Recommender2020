@@ -9,9 +9,13 @@ RUN pip install -r ./requirements.txt
 RUN mkdir /app
 COPY main.py /app
 
-# The starting script
+# Install nltk dependencies
+RUN [ "python", "-c", "import nltk; nltk.download('stopwords'); nltk.download('punkt')" ]
+
+# Set the workdir
 WORKDIR /app
 
+# Expose the flask port
 EXPOSE 5000
 
 ENTRYPOINT ["python", "main.py"]
