@@ -16,7 +16,9 @@ def recommend_offers():
 @app.route('/import')
 def import_offers():
     data_import = DataImport()
-    data_import.create_dataset()
+    dataset = data_import.create_dataset()
+
+    data_import.save_processsed_data(dataset)
 
     return "Import finished..."
 
