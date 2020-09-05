@@ -17,7 +17,7 @@ def recommend_offers():
 
 
 @app.route('/paidoffers', methods=["GET"])
-def recommend_offers():
+def recommend_paidoffers():
     text = request.args.get("text")
     recommender = RecommenderService()
     results = recommender.recommend(text, Config.PAID_OFFERS_FILENAME)
