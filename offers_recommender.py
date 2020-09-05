@@ -7,18 +7,23 @@ from sklearn.metrics.pairwise import linear_kernel
 class RecommenderService:
 
     def recommend(self, text):
-        vectorizer = TfidfVectorizer(ngram_range=(1, 3), min_df=0)
+        vectorizer = TfidfVectorizer()
         dataset = self._load_data()
         similarities = list()
 
-        print(dataset)
         for _, offer in dataset.iterrows():
             tfidf_matrix = vectorizer.fit_transform([offer["text"], text])
-            similarity = {"id": offer["id"], "similarity": (tfidf_matrix * tfidf_matrix.T).A[0, 1]}
+            similarity = (offer["id"], float((tfidf_matrix * tfidf_matrix.T).A[0, 1]))
 
             similarities.append(similarity)
+
+        similarities.sort(key=lambda s: s[1], reverse=True)
+        similarities = [s for s in similarities if s[1] > 0.2]
 
         return similarities
 
     def _load_data(self):
         return pd.read_csv("data/offers.csv")
+
+    def _new(self, name, data):
+        return type(name, (object,), data)
