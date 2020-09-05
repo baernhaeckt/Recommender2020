@@ -1,11 +1,11 @@
 from data_import import DataImport
 from offers_recommender import RecommenderService
 from config import Config
+from process_launcher import ProcessLauncher
 
 from flask import Flask, jsonify, request
 
 app = Flask(__name__)
-
 
 @app.route('/offers', methods=["GET"])
 def recommend_offers():
@@ -43,6 +43,12 @@ def import_paid_offers():
     data_import.save_processsed_data(dataset, Config.PAID_OFFERS_FILENAME)
 
     return "Paid offers import finished..."
+
+
+@app.route("/start", methods=["GET"])
+def start_change_stream():
+    ProcessLauncher()
+    return "Task in progress"
 
 
 if __name__ == "__main__":
