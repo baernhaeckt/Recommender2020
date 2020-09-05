@@ -15,7 +15,7 @@ def recommend_offers():
     return jsonify(result=results)
 
 
-@app.route('/import')
+@app.route('/import', methods=["GET"])
 def import_offers():
     data_import = DataImport()
     dataset = data_import.create_dataset()
