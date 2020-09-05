@@ -1,14 +1,13 @@
 import pandas as pd
 
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import linear_kernel
 
 
 class RecommenderService:
 
-    def recommend(self, text):
+    def recommend(self, text, filename):
         vectorizer = TfidfVectorizer()
-        dataset = self._load_data()
+        dataset = self._load_data(filename)
         similarities = list()
 
         for _, offer in dataset.iterrows():
@@ -24,8 +23,8 @@ class RecommenderService:
 
         return similarities
 
-    def _load_data(self):
-        return pd.read_csv("data/offers.csv")
+    def _load_data(self, filename):
+        return pd.read_csv("data/{0}".format(filename))
 
     def _new(self, name, data):
         return type(name, (object,), data)
