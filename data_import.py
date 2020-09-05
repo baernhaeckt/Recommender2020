@@ -5,12 +5,12 @@ from preprocessing import Preprocessing
 
 class DataImport:
 
-    def create_dataset(self, data_url):
+    def create_dataset(self, data_url, root_element):
         preprocessing = Preprocessing()
         dataset = self._load_data(data_url)
         offers = pd.DataFrame(columns=["id", "text"])
 
-        for offer in dataset["offers"]:
+        for offer in dataset[root_element]:
             categories = " ".join(offer["categories"])
             text = preprocessing.process_text("{0} {1} {2}".format(offer["name"], offer["description"], categories))
 

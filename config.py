@@ -6,3 +6,6 @@ class Config:
     PAID_OFFERS_FILENAME = "paidoffers.csv"
 
     SIMILARITY_THRESHOLD = 0.2
+
+    OFFERS_ROOT_ELEMENT = "offers"
+    PAID_OFFERS_ROOT_ELEMENT = "paidOffers"

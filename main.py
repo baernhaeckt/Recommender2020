@@ -28,7 +28,7 @@ def recommend_paidoffers():
 @app.route('/importoffers', methods=["GET"])
 def import_offers():
     data_import = DataImport()
-    dataset = data_import.create_dataset(Config.OFFERS_URL)
+    dataset = data_import.create_dataset(Config.OFFERS_URL, Config.OFFERS_ROOT_ELEMENT)
 
     data_import.save_processsed_data(dataset, Config.OFFERS_FILENAME)
 
@@ -38,7 +38,7 @@ def import_offers():
 @app.route('/importpaidoffers', methods=["GET"])
 def import_paid_offers():
     data_import = DataImport()
-    dataset = data_import.create_dataset(Config.PAID_OFFERS_URL)
+    dataset = data_import.create_dataset(Config.PAID_OFFERS_URL, Config.PAID_OFFERS_ROOT_ELEMENT)
 
     data_import.save_processsed_data(dataset, Config.PAID_OFFERS_FILENAME)
 
@@ -46,7 +46,7 @@ def import_paid_offers():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port="5000")
+    app.run(host="127.0.0.1", port="5000")
 
 
 
