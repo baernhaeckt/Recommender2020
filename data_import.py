@@ -1,18 +1,22 @@
 import pandas as pd
 
+from preprocessing import Preprocessing
+
 
 class DataImport:
 
     def create_dataset(self):
+        preprocessing = Preprocessing()
         dataset = self._load_data()
         offers = pd.DataFrame(columns=["id", "text"])
 
         for offer in dataset["offers"]:
             categories = " ".join(offer["Categories"])
-            print(categories)
+            text = preprocessing.process_text("{0} {1} {2}".format(offer["Name"], offer["Description"], categories))
+
             striped_offer = [{
                 "id": offer["id"],
-                "text": "{0} {1} {2}".format(offer["Name"], offer["Description"], categories)
+                "text": text
             }]
 
             offers = offers.append(striped_offer, ignore_index=True)
