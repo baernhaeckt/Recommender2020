@@ -1,0 +1,8 @@
+version: "3.7"
+services:
+  recommender-service:
+    image: offers-recommender
+    hostname: recommender
+    container_name: recommender
+    ports:
+      - 80:5000
