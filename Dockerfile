@@ -14,6 +14,7 @@ RUN [ "python", "-c", "import nltk; nltk.download('stopwords'); nltk.download('p
 
 # Set the workdir
 WORKDIR /app
+RUN mkdir data
 
 # Expose the flask port
 EXPOSE 5000
