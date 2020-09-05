@@ -24,7 +24,7 @@ class DataImport:
         return offers
 
     def save_processsed_data(self, processed_data):
-        processed_data.to_csv("offers.csv", index=False)
+        processed_data.to_csv("data/offers.csv", index=False)
 
     def _load_data(self):
         return pd.read_json("C:\git\BaernHaeckt\Backend2020\Data\offers.json")

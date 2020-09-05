@@ -1,7 +1,5 @@
-import nltk
-
-from preprocessing import Preprocessing
 from data_import import DataImport
+from offers_recommender import RecommenderService
 
 from flask import Flask
 
@@ -10,7 +8,8 @@ app = Flask(__name__)
 
 @app.route('/offers')
 def recommend_offers():
-    return "Angeln am Oeschinensee"
+    recommender = RecommenderService()
+    recommender.recommend("Land Spass")
 
 
 @app.route('/import')
