@@ -1,6 +1,7 @@
 import pandas as pd
 
 from preprocessing import Preprocessing
+from config import Config
 
 
 class DataImport:
@@ -27,4 +28,5 @@ class DataImport:
         processed_data.to_csv("data/offers.csv", index=False)
 
     def _load_data(self):
+        pd.read_json(Config.OFFERS_URL)
         return pd.read_json("C:\git\BaernHaeckt\Backend2020\Data\offers.json")
