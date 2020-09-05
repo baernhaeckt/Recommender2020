@@ -7,11 +7,11 @@ RUN pip install -r ./requirements.txt
 
 # The project
 RUN mkdir /app
-COPY simple_recommender.py /app
+COPY main.py /app
 
 # The starting script
 WORKDIR /app
 
 EXPOSE 5000
 
-ENTRYPOINT ["python", "simple_recommender.py"]
+ENTRYPOINT ["python", "main.py"]
