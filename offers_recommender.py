@@ -4,6 +4,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 
 from config import Config
 
+
 class RecommenderService:
 
     def recommend(self, text, filename):
@@ -26,6 +27,3 @@ class RecommenderService:
 
     def _load_data(self, filename):
         return pd.read_csv("data/{0}".format(filename))
-
-    def _new(self, name, data):
-        return type(name, (object,), data)
