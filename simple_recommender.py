@@ -45,5 +45,5 @@ if __name__ == "__main__":
     matrix = create_matrix(dataset)
     results = calculate_similarities(matrix, dataset)
 
-    recommend(98, 5, dataset, results)
+    recommend(54, 10, dataset, results)
 
