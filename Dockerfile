@@ -7,7 +7,7 @@ RUN pip install -r ./requirements.txt
 
 # The project
 RUN mkdir /app
-COPY main.py data_import.py offers_recommender.py preprocessing.py /app/
+COPY main.py data_import.py offers_recommender.py preprocessing.py config.py /app/
 
 # Install nltk dependencies
 RUN [ "python", "-c", "import nltk; nltk.download('stopwords'); nltk.download('punkt')" ]
