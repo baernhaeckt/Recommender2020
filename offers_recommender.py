@@ -18,6 +18,8 @@ class RecommenderService:
             similarities.append(similarity)
 
         similarities.sort(key=lambda s: s[1], reverse=True)
+
+        # Get all entries with a similarity greater then 0.2
         similarities = [s for s in similarities if s[1] > 0.2]
 
         return similarities
