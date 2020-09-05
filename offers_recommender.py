@@ -18,7 +18,7 @@ class RecommenderService:
 
             similarities.append(similarity)
 
-        print(similarities)
+        return similarities
 
     def _load_data(self):
         return pd.read_csv("data/offers.csv")

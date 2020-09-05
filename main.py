@@ -1,7 +1,7 @@
 from data_import import DataImport
 from offers_recommender import RecommenderService
 
-from flask import Flask
+from flask import Flask, jsonify
 
 app = Flask(__name__)
 
@@ -9,7 +9,9 @@ app = Flask(__name__)
 @app.route('/offers')
 def recommend_offers():
     recommender = RecommenderService()
-    recommender.recommend("Land Spass")
+    results = recommender.recommend("bier geniessen unterhaltung spass stadt")
+
+    return jsonify(result=results)
 
 
 @app.route('/import')
