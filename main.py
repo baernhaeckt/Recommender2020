@@ -16,6 +16,15 @@ def recommend_offers():
     return jsonify(result=results)
 
 
+@app.route('/paidoffers', methods=["GET"])
+def recommend_offers():
+    text = request.args.get("text")
+    recommender = RecommenderService()
+    results = recommender.recommend(text, Config.PAID_OFFERS_FILENAME)
+
+    return jsonify(result=results)
+
+
 @app.route('/importoffers', methods=["GET"])
 def import_offers():
     data_import = DataImport()

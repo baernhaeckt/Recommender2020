@@ -4,3 +4,5 @@ class Config:
 
     OFFERS_FILENAME = "offers.csv"
     PAID_OFFERS_FILENAME = "paidoffers.csv"
+
+    SIMILARITY_THRESHOLD = "0.2"

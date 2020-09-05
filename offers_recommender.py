@@ -2,6 +2,7 @@ import pandas as pd
 
 from sklearn.feature_extraction.text import TfidfVectorizer
 
+from config import Config
 
 class RecommenderService:
 
@@ -19,7 +20,7 @@ class RecommenderService:
         similarities.sort(key=lambda s: s[1], reverse=True)
 
         # Get all entries with a similarity greater then 0.2
-        similarities = [s for s in similarities if s[1] > 0.2]
+        similarities = [s for s in similarities if s[1] > Config.SIMILARITY_THRESHOLD]
 
         return similarities
 
