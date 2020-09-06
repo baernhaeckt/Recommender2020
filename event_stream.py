@@ -39,4 +39,4 @@ class EventStream:
         dataset = pd.read_csv("data/{0}".format(Config.OFFERS_FILENAME))
         dataset.at[dataset["id"] == str(document_id), "text"] = text
 
-        dataset.to_csv("data/{0}".format(Config.OFFERS_FILENAME))
+        dataset.to_csv("data/{0}".format(Config.OFFERS_FILENAME), index=False)
